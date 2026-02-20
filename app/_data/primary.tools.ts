@@ -1,4 +1,4 @@
-export const tools = [
+export const primaryTools = [
     {
         label: "Tints and Shades",
         path: "/tints-shades",
@@ -36,14 +36,14 @@ export const tools = [
         description: "Evaluate the contrast between two colors for accessibility compliance.",
     },
     {
-        label: "Pallet Generator",
-        path: "/pallet-generator",
+        label: "Palette Generator",
+        path: "/palette-generator",
         class: "text-yellow-500 hover:bg-yellow-50",
         description: "Create unique color palettes for your projects.",
     },
     {
-        label: "Browse Pallets",
-        path: "/browse-pallets",
+        label: "Browse Palettes",
+        path: "/browse-palettes",
         class: "text-red-500 hover:bg-red-50",
         description: "Browse a collection of curated color palettes.",
     },

@@ -10,9 +10,8 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import { tools } from "@/app/_data/tools"
+import { primaryTools } from "@/app/_data/primary.tools"
 import Link from "next/link";
-import Image from "next/image"
 
 
 
@@ -36,10 +35,10 @@ export const Header = () => {
                                 <DrawerTitle>Tools</DrawerTitle>
                                 <DrawerDescription>Choose a tool to get started.</DrawerDescription>
                             </DrawerHeader>
-                            <div className=" grid md:grid-cols-12 grid-cols-1 gap-6 overflow-y-auto">
+                            <div className=" grid md:grid-cols-12 grid-cols-1  overflow-y-auto">
                                 <div className=" md:col-span-7">
                                     <div className=" grid md:grid-cols-2 grid-cols-1  p-4">
-                                        {tools.map((tool) => (
+                                        {primaryTools.map((tool) => (
                                             <Link
                                                 className={`${tool.class} p-4 rounded-xl transition-all duration-300`}
                                                 key={tool.path}
@@ -51,9 +50,11 @@ export const Header = () => {
                                     </div>
 
                                 </div>
-                                <div className=" md:col-span-5">
-                                    sdasad
+
+                                <div className="md:col-span-5">
+                                    Coming Soon...
                                 </div>
+
                             </div>
 
                         </DrawerContent>

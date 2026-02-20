@@ -9,11 +9,13 @@ export const Header = () => {
             <div className=" flex justify-between items-center gap-4 px-4 py-2.5">
                 <Logo />
                 <div className=" flex items-center gap-2">
-                    <Button variant="ghost" >
+                    <ThemeSwitch />
+                    <Button variant="outline" >
                         Tools
                         <ChevronDown className=" size-4" />
                     </Button>
-                    <ThemeSwitch />
+
+                    <Button>Generate Palette</Button>
                 </div>
             </div>
         </header>

@@ -35,23 +35,23 @@ export const Header = () => {
                                 <DrawerTitle>Tools</DrawerTitle>
                                 <DrawerDescription>Choose a tool to get started.</DrawerDescription>
                             </DrawerHeader>
-                            <div className=" grid md:grid-cols-12 grid-cols-1  overflow-y-auto">
-                                <div className=" md:col-span-7">
-                                    <div className=" grid md:grid-cols-2 grid-cols-1  p-4">
+                            <div className=" grid lg:grid-cols-12 grid-cols-1    overflow-y-auto">
+                                <div className=" lg:col-span-7">
+                                    <div className=" grid sm:grid-cols-2 grid-cols-1 md:gap-0 gap-4  p-4">
                                         {primaryTools.map((tool) => (
                                             <Link
-                                                className={`${tool.class} p-4 rounded-xl transition-all duration-300`}
+                                                className={`${tool.class} md:p-4 rounded-xl transition-all duration-300`}
                                                 key={tool.path}
                                                 href={tool.path}>
-                                                <p className=" text-3xl font-bold mb-2">{tool.label}</p>
-                                                <p className=" text-base text-foreground ">{tool.description}</p>
+                                                <p className=" md:text-3xl text-2xl font-bold md:mb-2 mb-1">{tool.label}</p>
+                                                <p className=" text-base  text-foreground ">{tool.description}</p>
                                             </Link>
                                         ))}
                                     </div>
 
                                 </div>
 
-                                <div className="md:col-span-5">
+                                <div className="lg:col-span-5">
                                     Coming Soon...
                                 </div>
 

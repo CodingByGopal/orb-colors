@@ -1,19 +1,15 @@
-export const normalizeHex = (hex: string) => {
-    if (!hex) return null;
+export const normalizeHex = (input: string): string | null => {
+    const hex = input.trim().replace(/^#/, '');
 
-    hex = hex.replace('#', '').trim().toLowerCase();
-
-    if (hex.length === 3) {
-        return hex.split('').map((ch: string) => ch + ch).join('');
+    if (!/^([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/i.test(hex)) {
+        return null; // invalid input
     }
 
-    if (hex.length === 6) {
-        return hex;
-    }
+    // Expand 3-digit shorthand to 6-digit
+    const fullHex = hex.length === 3 ? hex.split('').map(c => c + c).join('') : hex;
 
-    return null; // invalid hex
-}
-
+    return fullHex;
+};
 export const prepareColorSlug = (hexs: string) => {
     // space separated multiple hex colors and return a string of hex colors separated by '-'
     if (!hexs) return null;

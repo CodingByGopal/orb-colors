@@ -1,24 +1,55 @@
+"use client"
+import { useState } from "react"
+import { HexColorPicker } from "react-colorful"
 import {
     Popover,
     PopoverContent,
-    PopoverDescription,
-    PopoverHeader,
-    PopoverTitle,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import { Button } from "@/components/ui/button"
+import { Plus } from "lucide-react"
+import { Input } from "@/components/ui/input"
+
 const ColorPickerPopup = (props: {
     children: React.ReactNode
+    onAddColor?: (hex: string) => void
 }) => {
+    const [open, setOpen] = useState(false)
+    const [color, setColor] = useState("#3b82f6")
+
+    const onAddColor = () => {
+        props.onAddColor?.(color)
+        setOpen(false);
+    }
+
     return (
-        <Popover>
+        <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 {props.children}
             </PopoverTrigger>
-            <PopoverContent>
-                <PopoverHeader>
-                    <PopoverTitle>Title</PopoverTitle>
-                    <PopoverDescription>Description text here.</PopoverDescription>
-                </PopoverHeader>
+            <PopoverContent className="w-fitp-3 space-y-3">
+                <HexColorPicker color={color} onChange={setColor} style={{ width: "100%" }} />
+                <div className="flex items-center gap-2">
+                    <div
+                        className="size-8 rounded border border-border shrink-0"
+                        style={{ backgroundColor: color }}
+                    />
+                    <Input
+                        type="text"
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
+                        maxLength={7}
+                        className="flex-1"
+                    />
+                    {props.onAddColor && (
+                        <Button
+                            type="button"
+                            onClick={onAddColor}
+                        >
+                            <Plus /> Add
+                        </Button>
+                    )}
+                </div>
             </PopoverContent>
         </Popover>
     )

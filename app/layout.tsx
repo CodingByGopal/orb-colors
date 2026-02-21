@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body
-        className='antialiased flex flex-col h-screen'
+        className='antialiased flex flex-col h-screen  max-w-[1536px] mx-auto xl:border-x  overflow-hidden'
       >
         <ThemeProvider
           attribute="class"

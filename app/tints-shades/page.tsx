@@ -1,7 +1,9 @@
-
+"use client"
 const TintsShadesPage = () => {
     return (
-        <div> TintsShadesPage</div>
+        <section className=" "> TintsShadesPage
+
+        </section>
     )
 }
 

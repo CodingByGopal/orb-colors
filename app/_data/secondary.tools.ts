@@ -16,16 +16,16 @@ export const secondaryTools = [
         path: "/gradient-palette",
     },
     {
-        label: "Image Converter",
-        path: "/image-converter",
+        label: "Color Converter",
+        path: "/color-converter",
+    },
+    {
+        label: "Palette Visualizer",
+        path: "/palette-visualizer",
     },
     {
         label: "Collage Maker",
         path: "/collage-maker",
-    },
-    {
-        label: "Grid Maker",
-        path: "/grid-maker",
     },
 
 

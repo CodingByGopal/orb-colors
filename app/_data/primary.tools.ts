@@ -47,4 +47,5 @@ export const primaryTools = [
         class: "text-red-500 hover:bg-red-50 dark:hover:bg-red-900",
         description: "Browse a collection of curated color palettes.",
     },
+
 ];

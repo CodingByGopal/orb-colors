@@ -9,11 +9,12 @@ import {
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
+    DrawerClose,
 } from "@/components/ui/drawer"
 import { primaryTools } from "@/app/_data/primary.tools"
 import Link from "next/link";
 import { secondaryTools } from "@/app/_data/secondary.tools"
-import { navs } from "@/app/_data/navs"
+import { otherTools } from "@/app/_data/other.tools"
 
 
 
@@ -47,13 +48,16 @@ export const Header = () => {
                                 <div className=" lg:col-span-7">
                                     <div className=" grid sm:grid-cols-2 grid-cols-1 md:gap-0 gap-4  p-4">
                                         {primaryTools.map((tool) => (
-                                            <Link
-                                                className={`${tool.class} md:p-4 rounded-xl transition-all duration-300`}
-                                                key={tool.path}
-                                                href={tool.path}>
-                                                <p className=" md:text-3xl sm:text-xl text-lg font-bold md:mb-2 mb-1">{tool.label}</p>
-                                                <p className=" sm:text-base text-sm  text-foreground ">{tool.description}</p>
-                                            </Link>
+                                            <DrawerClose key={tool.path} asChild>
+                                                <Link
+                                                    className={`${tool.class} md:p-4 rounded-xl transition-all duration-300`}
+
+                                                    href={tool.path}>
+                                                    <p className=" md:text-3xl sm:text-xl text-lg font-bold md:mb-2 mb-1">{tool.label}</p>
+                                                    <p className=" sm:text-base text-sm  text-foreground ">{tool.description}</p>
+                                                </Link>
+                                            </DrawerClose>
+
                                         ))}
                                     </div>
 
@@ -65,26 +69,28 @@ export const Header = () => {
                                             <p className=" sm:text-xl text-base text-muted-foreground uppercase   md:px-4 mb-3">Design Tools</p>
                                             <div className=" flex flex-col sm:text-lg text-sm md:gap-0 gap-4 ">
                                                 {secondaryTools.map((tool) => (
-                                                    <Link
-                                                        className=' hover:bg-accent md:px-4 md:py-2 rounded-md w-fit transition-all duration-300 '
-                                                        key={tool.path}
-                                                        href={tool.path}>
-                                                        {tool.label}
-                                                    </Link>
+                                                    <DrawerClose key={tool.path} asChild>
+                                                        <Link
+                                                            className=' hover:bg-accent md:px-4 md:py-2 rounded-md w-fit transition-all duration-300 '
+                                                            href={tool.path}>
+                                                            {tool.label}
+                                                        </Link>
+                                                    </DrawerClose>
                                                 ))}
                                             </div>
 
                                         </div>
                                         <div>
-                                            <p className=" sm:text-xl text-base text-muted-foreground uppercase   md:px-4 mb-3">Company</p>
+                                            <p className=" sm:text-xl text-base text-muted-foreground uppercase   md:px-4 mb-3">Other Tools</p>
                                             <div className=" flex flex-col sm:text-lg text-sm md:gap-0 gap-4 ">
-                                                {navs.map((tool) => (
-                                                    <Link
-                                                        className=' hover:bg-accent md:px-4 md:py-2 rounded-md w-fit transition-all duration-300 '
-                                                        key={tool.path}
-                                                        href={tool.path}>
-                                                        {tool.label}
-                                                    </Link>
+                                                {otherTools.map((tool) => (
+                                                    <DrawerClose key={tool.path} asChild>
+                                                        <Link
+                                                            className=' hover:bg-accent md:px-4 md:py-2 rounded-md w-fit transition-all duration-300 '
+                                                            href={tool.path}>
+                                                            {tool.label}
+                                                        </Link>
+                                                    </DrawerClose>
                                                 ))}
                                             </div>
 

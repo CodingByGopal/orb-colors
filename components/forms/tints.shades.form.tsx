@@ -60,6 +60,15 @@ const TintsShadesForm = (props: { colors: string | null, hashtag: string | null,
         router.push(`/tints-shades?${searchParams?.toString()}`);
     }
 
+    const onAddColor = (hex: string) => {
+        const current = form.getValues("hexColors").trim();
+        form.setValue(
+            "hexColors",
+            current ? `${current} ${hex}` : hex,
+            { shouldValidate: true }
+        );
+    }
+
     return (
         <form id="tints-shades-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FieldGroup>
@@ -84,20 +93,13 @@ const TintsShadesForm = (props: { colors: string | null, hashtag: string | null,
                     )}
                 />
             </FieldGroup>
-            <div className="flex gap-2 items-center mt-4">
+            <div className="flex gap-2 items-center flex-wrap mt-4">
                 <ColorPickerPopup
-                    onAddColor={(hex) => {
-                        const current = form.getValues("hexColors").trim();
-                        form.setValue(
-                            "hexColors",
-                            current ? `${current} ${hex}` : hex,
-                            { shouldValidate: true }
-                        );
-                    }}
+                    onAddColor={onAddColor}
                 >
-                    <Button type="button" size="xl" variant="outline"><Palette />Choose Colors</Button>
+                    <Button className=" sm:flex-none flex-1" type="button" size="xl" variant="outline"><Palette />Choose Colors</Button>
                 </ColorPickerPopup>
-                <Button type="button" size="xl" variant="outline" onClick={onClear} ><Trash />Clear</Button>
+                <Button className=" sm:flex-none flex-1" type="button" size="xl" variant="outline" onClick={onClear} ><Trash />Clear</Button>
                 <Button className=" flex-1" type="submit" size="xl" ><Sparkles />Generate Tints and Shades</Button>
             </div>
 

@@ -9,17 +9,35 @@ import {
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { normalizeHex } from "@/app/_data/color-methods/orb.colors"
+import { toast } from "sonner"
+
+const defaultColor = "#3b82f6"
 
 const ColorPickerPopup = (props: {
     children: React.ReactNode
     onAddColor?: (hex: string) => void
 }) => {
     const [open, setOpen] = useState(false)
-    const [color, setColor] = useState("#3b82f6")
+    const [color, setColor] = useState(defaultColor)
 
     const onAddColor = () => {
-        props.onAddColor?.(color)
-        setOpen(false);
+        const normalizedColor = normalizeHex(color)
+        if (normalizedColor) {
+            props.onAddColor?.(`#${normalizedColor}`)
+            setOpen(false);
+            setColor(defaultColor)
+
+        } else {
+            toast.error("Invalid color", {
+                action: {
+                    label: "Close",
+                    onClick: () => toast.dismiss(),
+
+                }
+            })
+        }
+
     }
 
     return (
@@ -27,7 +45,7 @@ const ColorPickerPopup = (props: {
             <PopoverTrigger asChild>
                 {props.children}
             </PopoverTrigger>
-            <PopoverContent className="w-fitp-3 space-y-3">
+            <PopoverContent >
                 <HexColorPicker color={color} onChange={setColor} style={{ width: "100%" }} />
                 <div className="flex items-center gap-2">
                     <div

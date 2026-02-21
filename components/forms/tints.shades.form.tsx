@@ -15,6 +15,7 @@ import { Button } from "../ui/button"
 import { prepareColorSlug } from "@/app/_data/color-methods/orb.colors"
 import { useRouter } from "next/navigation"
 import { Palette, Sparkles, Trash } from "lucide-react"
+import ColorPickerPopup from "../color.picker.popup"
 
 const formSchema = z.object({
     hexColors: z
@@ -84,7 +85,9 @@ const TintsShadesForm = (props: { colors: string | null, hashtag: string | null,
                 />
             </FieldGroup>
             <div className="flex gap-2 items-center mt-4">
-                <Button type="button" size="xl" variant="outline" ><Palette />Choose Colors</Button>
+                <ColorPickerPopup>
+                    <Button type="button" size="xl" variant="outline" ><Palette />Choose Colors</Button>
+                </ColorPickerPopup>
                 <Button type="button" size="xl" variant="outline" onClick={onClear} ><Trash />Clear</Button>
                 <Button className=" flex-1" type="submit" size="xl" ><Sparkles />Generate Tints and Shades</Button>
             </div>
